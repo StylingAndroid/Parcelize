@@ -1,7 +1,6 @@
 package com.stylingandroid.parcelize
 
 import android.os.Bundle
-import android.os.Parcel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,18 +36,10 @@ class MainFragment : Fragment() {
             MainFragment().apply {
                 arguments = Bundle().apply {
                     putParcelable(ARG_SIMPLE, simpleDataClass)
-                    var parcel = Parcel.obtain()
-                    parcel.writeParcelable(compound, 0)
-                    val byteArray = parcel.marshall()
-                    parcel.recycle()
-                    parcel = Parcel.obtain()
-                    parcel.unmarshall(byteArray, 0, byteArray.size)
-                    parcel.setDataPosition(0)
                     putParcelable(
                         ARG_COMPOUND,
-                        parcel.readParcelable(CompoundDataClass::class.java.classLoader)
+                        CompoundDataClass::class.java.expand(compound.collapse())
                     )
-                    parcel.recycle()
                 }
             }
     }
