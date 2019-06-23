@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 data class CompoundDataClass @JvmOverloads constructor(
     val name: String,
     val simpleDataClass: SimpleDataClass,
-    val transientString: String = ""
+    @Transient val transientString: String = ""
 ) : Parcelable {
 
     companion object : Parceler<CompoundDataClass> {
