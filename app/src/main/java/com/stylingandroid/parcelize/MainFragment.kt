@@ -38,6 +38,24 @@ class MainFragment : Fragment() {
                     putParcelable(ARG_SIMPLE, simpleDataClass)
                     putParcelable(
                         ARG_COMPOUND,
+                        /*
+                         * Don't do this.
+                         *
+                         * I've done this here in some sample code to demonstrate
+                         * that things don't always get flattened. There is no
+                         * reason than you'd actually want to do this in this context.
+                         *
+                         * So...really...don't do this.
+                         *
+                         * Look, I'm not joking, you really shouldn't do this.
+                         *
+                         * Even if you're being attacked by a pack of wild dogs and
+                         * think that collapsing then immediately re-expanding a
+                         * Parcelable will save your life, then I'm sorry, but
+                         * it won't. Rest In Peace.
+                         *
+                         * Perhaps I forgot to mention: you really shouldn't do this.
+                         */
                         CompoundDataClass::class.java.expand(compound.collapse())
                     )
                 }
